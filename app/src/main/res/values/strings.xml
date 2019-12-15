@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Oysi</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="nhietdo">°</string>
+    <string name="thoitiet">Thời tiết :</string>
+    <string name="nhietdoCity">Nhiệt độ :</string>
+    <string name="mucdoonhiem">Mức độ ô nhiễm :</string>
+    <string name="AQI">AQI US</string>
+    <string name="xemvitri">Xem vị trí</string>
+    <string name="city">Thành Phố :</string>
+    <string name="rank">Ranking</string>
+    <string name="nothing">\"\"</string>
+    <string name="List">List</string>
+    <string name="VietNam">VietNam</string>
+    <string name="Rank">Rank</string>
+</resources>

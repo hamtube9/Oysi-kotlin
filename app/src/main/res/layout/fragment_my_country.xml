@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llAdvertise"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/orangeAgent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:padding="@dimen/margin5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_size_16"
+                android:layout_weight="2"
+                android:text="Hãy theo dõi không khí để đảm bảo an toàn cho sức khỏe của bạn.\n Bạn đã có khẩu trang chưa? \n Nếu chưa có hãy mua ngay!!"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgClose"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clear_black_24dp" />
+
+                <ImageView
+                    android:layout_width="@dimen/size_48"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/khautrang" />
+<TextView
+    android:text="Get"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.daimajia.swipe.SwipeLayout xmlns:swipe="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/swipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:clickToClose="true"
+                swipe:leftEdgeSwipeOffset="0dp"
+                swipe:rightEdgeSwipeOffset="0dp">
+
+                <LinearLayout
+                    android:id="@+id/llHide"
+                    android:layout_width="@dimen/size_box"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imgShareHanoi"
+                        android:layout_width="@dimen/size_30"
+                        android:layout_height="@dimen/size_30"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:src="@drawable/ic_share" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:padding="@dimen/margin5"
+                            android:text="@string/city" />
+
+                        <TextView
+                            android:id="@+id/tvCityHanoi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:padding="@dimen/margin5" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvCanhBaoHanoi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/margin5"
+                                    android:textStyle="italic" />
+
+                                <ImageView
+                                    android:id="@+id/imgEmotionHanoi"
+                                    android:layout_width="@dimen/size_48"
+                                    android:layout_height="@dimen/size_48" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/tvThoiTiet"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/thoitiet"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintLeft_toLeftOf="parent"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <ImageView
+                                        android:id="@+id/imgThoiTietHanoi"
+                                        android:layout_width="@dimen/size_icon"
+                                        android:layout_height="@dimen/size_icon"
+                                        android:layout_marginStart="@dimen/margin5"
+                                        android:layout_marginLeft="@dimen/margin5"
+                                        android:src="@drawable/ic_sun"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintLeft_toRightOf="@id/tvThoiTiet"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/tvNhietDoCity"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="@dimen/margin5"
+                                        android:text="@string/nhietdoCity"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toLeftOf="@id/tvNhietDoHaNoi"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/tvNhietDoHaNoi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="@dimen/margin5"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toLeftOf="@id/doC"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/doC"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="@dimen/margin10"
+                                        android:layout_marginRight="@dimen/margin10"
+                                        android:text="@string/nhietdo"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toRightOf="parent"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/margin10"
+                                    android:text="@string/mucdoonhiem"
+                                    android:textSize="@dimen/text_size_20" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tvAQIHanoi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:textSize="@dimen/text_size_20" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="@string/AQI"
+                                        android:textSize="@dimen/text_size_16" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.daimajia.swipe.SwipeLayout>
+
+            <com.daimajia.swipe.SwipeLayout xmlns:swipe="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/swipe2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:clickToClose="true"
+                swipe:leftEdgeSwipeOffset="0dp"
+                swipe:rightEdgeSwipeOffset="0dp">
+
+                <LinearLayout
+                    android:id="@+id/llHide2"
+                    android:layout_width="@dimen/size_box"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imgShareHCM"
+                        android:layout_width="@dimen/size_30"
+                        android:layout_height="@dimen/size_30"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:src="@drawable/ic_share" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_marginTop="@dimen/margin10"
+                            android:padding="@dimen/margin5"
+                            android:text="@string/city" />
+
+                        <TextView
+                            android:id="@+id/tvCityHCM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_marginTop="@dimen/margin10"
+                            android:padding="@dimen/margin5" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvCanhBaoHCM"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/margin5"
+                                    android:textStyle="italic" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_48"
+                                    android:layout_height="@dimen/size_48"
+                                    android:src="@drawable/ic_sad" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/tvThoiTietHCM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/thoitiet"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintLeft_toLeftOf="parent"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <ImageView
+                                        android:id="@+id/imgThoiTietHCM"
+                                        android:layout_width="@dimen/size_icon"
+                                        android:layout_height="@dimen/size_icon"
+                                        android:layout_marginLeft="@dimen/margin5"
+                                        android:src="@drawable/ic_sun"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintLeft_toRightOf="@id/tvThoiTietHCM"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/tvNhietDoCityHCM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="@dimen/margin5"
+                                        android:text="@string/nhietdoCity"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toLeftOf="@id/tvNhietDoHCM"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/tvNhietDoHCM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="@dimen/margin5"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toLeftOf="@id/doCHCM"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/doCHCM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="@dimen/margin10"
+                                        android:layout_marginRight="@dimen/margin10"
+                                        android:text="@string/nhietdo"
+                                        swipe:layout_constraintBottom_toBottomOf="parent"
+                                        swipe:layout_constraintRight_toRightOf="parent"
+                                        swipe:layout_constraintTop_toTopOf="parent" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/margin10"
+                                    android:text="@string/mucdoonhiem"
+                                    android:textSize="@dimen/text_size_20" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:textSize="@dimen/text_size_20" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="@string/AQI"
+                                        android:textSize="@dimen/text_size_16" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.daimajia.swipe.SwipeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_size_20"
+                android:layout_marginTop="@dimen/margin10"
+                android:layout_marginRight="@dimen/text_size_20"
+                android:text="@string/xemvitri" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 app:clickToClose="true"
                 swipe:leftEdgeSwipeOffset="0dp"
-                swipe:rightEdgeSwipeOffset="0dp">
+                >
 
                 <LinearLayout
                     android:id="@+id/llHide"
@@ -335,9 +335,9 @@
                                     android:textStyle="italic" />
 
                                 <ImageView
+                                    android:id="@+id/imgEmotionHCM"
                                     android:layout_width="@dimen/size_48"
-                                    android:layout_height="@dimen/size_48"
-                                    android:src="@drawable/ic_sad" />
+                                    android:layout_height="@dimen/size_48" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -429,6 +429,7 @@
                                     android:orientation="vertical">
 
                                     <TextView
+                                        android:id="@+id/tvAQIHCM"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"

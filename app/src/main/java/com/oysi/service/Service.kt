@@ -18,6 +18,10 @@ interface Service {
     //api.airvisual.com/v2/city?city=Hanoi&state=Hanoi&country=Vietnam&key=3564653d-5190-4ee6-9236-7cb733f6f27c
 
     @GET("v2/city")
-    fun getDistrict(@Query("country") country:String, @Query("state")state : String, @Query("city")city : String,
+    fun getHanoi(@Query("country") country:String, @Query("state")state : String, @Query("city")city : String,
+                 @Query("key")key:String): Observable<DistrictResponse>
+
+    @GET("v2/city")
+    fun getHCM(@Query("country") country:String, @Query("state")state : String, @Query("city")city : String,
                  @Query("key")key:String): Observable<DistrictResponse>
 }

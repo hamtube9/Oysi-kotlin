@@ -23,7 +23,8 @@ class CityHCMPresenter : Presenter {
     }
 
      fun getHCM(country : String,state : String, city: String, key: String){
-        compositeDisposable.add(RetrofitService.getAPIService().getHCM(country,state,city,key).subscribeOn(Schedulers.io())
+        compositeDisposable.add(RetrofitService.getAPIService().getHCM(country,state,city,key)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::getData){t-> getDataFail(t,"Get Data Ho Chi Minh Fail")})
     }

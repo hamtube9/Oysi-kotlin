@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Oysi</string>
     <string name="title_activity_maps">Map</string>
-    <string name="nhietdo">°</string>
+    <string name="nhietdo">°C</string>
     <string name="thoitiet">Thời tiết :</string>
     <string name="nhietdoCity">Nhiệt độ :</string>
     <string name="mucdoonhiem">Mức độ ô nhiễm :</string>
@@ -13,4 +13,22 @@
     <string name="List">List</string>
     <string name="VietNam">VietNam</string>
     <string name="Rank">Rank</string>
+    <string name="link">
+<a href="https://shopee.vn">Get</a>
+    </string>
+    <string name="current_location">Vị trí hiện tại</string>
+    <string name="keyAirVisual">3564653d-5190-4ee6-9236-7cb733f6f27c</string>
+    <string name="vitri">Vị trí :</string>
+
+
+    //color
+
+    <string name="normal">#66fdd74b</string>
+    <string name="good">#66a8e05f</string>
+    <string name="notgood">#66fe9b57</string>
+    <string name="danger">#66fe6a69</string>
+    <string name="soimportant">#6684002c</string>
+    <string name="careful">#66a87383</string>
+    <string name="quality">Độ ô nhiễm :</string>
+    <string name="chon">Hãy chọn 1 thành Phố</string>
 </resources>

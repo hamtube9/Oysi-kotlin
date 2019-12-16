@@ -33,7 +33,7 @@ class AdapterCountry(var context: Context,var list : ArrayList<Data>,var onclick
         return list.size
     }
 
-    fun setCityCraft(filterCountryCraft : ArrayList<Data>){
+    fun setCityCraft(filterCountryCraft : ArrayList<Data>?){
         if (filterCountryCraft != null) {
             this.list = filterCountryCraft
         }
@@ -44,6 +44,7 @@ class AdapterCountry(var context: Context,var list : ArrayList<Data>,var onclick
         holder.itemView.cardViewCountry.setOnClickListener {
             onclick.onclickListener(position)
         }
+
     }
 
     override fun getFilter(): Filter {

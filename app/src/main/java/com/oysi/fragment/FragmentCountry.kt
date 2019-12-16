@@ -20,7 +20,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class FragmentCountry : BaseFragment(), CountryViewPresenter {
-
     val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
     var list = ArrayList<Data>()
     var data = ArrayList<Data>()
@@ -34,22 +33,22 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
     ): View? {
         presenter = CountryPresenter()
         presenter.attachView(this)
-
         return inflater.inflate(R.layout.fragment_country, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        progress_dialogCountry.visibility = View.VISIBLE
         adapter = AdapterCountry(activity!!.applicationContext, list,object  : AdapterCountry.onItemSelect{
             override fun onclickListener(position: Int) {
-                var transaction = activity!!.supportFragmentManager.beginTransaction()
-                var fragmentState = FragmentState()
+                val transaction = activity!!.supportFragmentManager.beginTransaction()
+                val fragmentState = FragmentState()
                 transaction.replace(R.id.frame_layout,fragmentState)
-                var country = list.get(position).country
-                var b = Bundle()
+                val country = list.get(position).country
+                val b = Bundle()
                 b.putString("country",country)
                 fragmentState.arguments = b
+                transaction.addToBackStack(null)
                 transaction.commit()
 
             }
@@ -102,10 +101,15 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
 
     /*------------- View Event Listener--------------*/
     override fun onLoadCountrySuccess(response: CountryResponse) {
-        Log.d("country", response.data.size.toString())
-        data.addAll(response.data)
-        list.addAll(data)
-        adapter.notifyDataSetChanged()
+
+        if (response.status=="success"){
+            data.addAll(response.data)
+            list.addAll(data)
+            adapter.notifyDataSetChanged()
+            progress_dialogCountry.visibility = View.INVISIBLE
+
+        }
+
     }
 
     override fun showError(error: String) {

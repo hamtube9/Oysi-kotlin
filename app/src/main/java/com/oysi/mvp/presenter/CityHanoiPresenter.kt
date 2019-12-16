@@ -1,5 +1,6 @@
 package com.oysi.mvp.presenter
 
+import android.util.Log
 import com.oysi.model.district.DistrictResponse
 import com.oysi.mvp.Presenter
 import com.oysi.mvp.View
@@ -9,7 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CitiyHanoiPresenter : Presenter{
+class CityHanoiPresenter : Presenter{
     private var presenter : CityHaNoiViewPresenter?=null
     private var compositeDisposable = CompositeDisposable()
     override fun attachView(view: View) {
@@ -20,8 +21,8 @@ class CitiyHanoiPresenter : Presenter{
       compositeDisposable.dispose()
     }
 
-    fun loadDataDistrict(county : String,state : String, city: String, key: String){
-        compositeDisposable.add(RetrofitService.getAPIService().getHanoi(county,state,city,key)
+    fun loadDataDistrict( key: String){
+        compositeDisposable.add(RetrofitService.getAPIService().getHanoi("Vietnam", "Hanoi", "Hanoi",key)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::loadDataDistrictSuccess){t-> loadDataDistrictFail(t,"Load District Fail")  }
@@ -33,6 +34,7 @@ class CitiyHanoiPresenter : Presenter{
     }
 
     private fun loadDataDistrictFail(t:Throwable,error:String){
+        Log.d("ErrorCity",t.localizedMessage)
         presenter!!.showError(error)
     }
 

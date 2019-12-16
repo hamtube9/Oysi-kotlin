@@ -14,8 +14,8 @@ class FragmentListWorld:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_list_world,container,false)
-        var transaction = activity!!.supportFragmentManager.beginTransaction()
+        val view = inflater.inflate(R.layout.fragment_list_world,container,false)
+        val transaction = activity!!.supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_layout,FragmentCountry())
         transaction.commit()
         return view

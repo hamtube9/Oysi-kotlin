@@ -31,5 +31,8 @@ class AdapterState(var context: Context,var list: ArrayList<Data>,var itemSelect
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tvState.text = list[position].state
+        holder.itemView.cardViewState.setOnClickListener {
+            itemSelectOnClick.onclickListener(position)
+        }
     }
 }

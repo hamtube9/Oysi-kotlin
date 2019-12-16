@@ -29,7 +29,7 @@ class FragmentState : BaseFragment(),StateViewPresenter {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view =inflater.inflate(R.layout.fragment_state,container,false)
+        val view =inflater.inflate(R.layout.fragment_state,container,false)
         preesenter = StatePresenter()
         preesenter.attachView(this)
         return view
@@ -37,14 +37,22 @@ class FragmentState : BaseFragment(),StateViewPresenter {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        var b = arguments
+        progress_dialogState.visibility = View.VISIBLE
+        val b = arguments
         country= b!!.getString("country")
         adapter = AdapterState(activity!!.applicationContext,list,object : AdapterState.ItemSelectOnClick{
             override fun onclickListener(position: Int) {
-
+                val fm = activity!!.supportFragmentManager.beginTransaction()
+                val fragmentCity = FragmentCity()
+                fm.replace(R.id.frame_layout,fragmentCity)
+                val bundle=Bundle()
+                bundle.putString("state",list[position].state)
+                bundle.putString("country",country)
+                fragmentCity.arguments = bundle
+                fm.addToBackStack(null)
+                fm.commit()
             }
         })
-
         rcState.adapter = adapter
         rcState.layoutManager = GridLayoutManager(activity!!.applicationContext,2)
         adapter.notifyDataSetChanged()
@@ -65,6 +73,7 @@ class FragmentState : BaseFragment(),StateViewPresenter {
           list.clear()
           list.addAll(data)
           adapter.notifyDataSetChanged()
+          progress_dialogState.visibility=View.INVISIBLE
       }
     }
 

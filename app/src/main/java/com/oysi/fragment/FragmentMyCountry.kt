@@ -1,30 +1,33 @@
 package com.oysi.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.daimajia.swipe.SwipeLayout
 import com.oysi.R
+import com.oysi.activity.MapsActivity
 import com.oysi.base.BaseFragment
 import com.oysi.model.district.DistrictResponse
 import com.oysi.mvp.ViewPresenter.CityHCMViewPresenter
 import com.oysi.mvp.ViewPresenter.CityHaNoiViewPresenter
-import com.oysi.mvp.presenter.CitiyHanoiPresenter
+import com.oysi.mvp.presenter.CityHanoiPresenter
 import com.oysi.mvp.presenter.CityHCMPresenter
 import kotlinx.android.synthetic.main.fragment_my_country.*
 
 class FragmentMyCountry:BaseFragment() , CityHaNoiViewPresenter, CityHCMViewPresenter {
     val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
-    lateinit var presenterHanoi: CitiyHanoiPresenter
+    lateinit var presenterHanoi: CityHanoiPresenter
     lateinit var presenterHCM : CityHCMPresenter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_my_country,container,false)
-        presenterHanoi = CitiyHanoiPresenter()
+        val view = inflater.inflate(R.layout.fragment_my_country,container,false)
+        presenterHanoi = CityHanoiPresenter()
         presenterHanoi.attachView(this)
 
         presenterHCM = CityHCMPresenter()
@@ -34,6 +37,7 @@ class FragmentMyCountry:BaseFragment() , CityHaNoiViewPresenter, CityHCMViewPres
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initView()
         llAdvertise.visibility = View.VISIBLE
         swipe.showMode= SwipeLayout.ShowMode.PullOut
         swipe.addDrag(SwipeLayout.DragEdge.Right,swipe.findViewById(R.id.llHide))
@@ -46,10 +50,18 @@ class FragmentMyCountry:BaseFragment() , CityHaNoiViewPresenter, CityHCMViewPres
         getHCM(key)
     }
 
+    private fun initView() {
+        tvLink.movementMethod = LinkMovementMethod.getInstance()
+
+     }
+
     /*------------- Onclick Listener--------------*/
     fun onClickListener(){
         imgClose.setOnClickListener {
             llAdvertise.visibility = View.GONE
+        }
+        btnMap.setOnClickListener {
+            startActivity(Intent(activity,MapsActivity::class.java))
         }
     }
 
@@ -57,7 +69,7 @@ class FragmentMyCountry:BaseFragment() , CityHaNoiViewPresenter, CityHCMViewPres
     /*------------- Event Listener--------------*/
 
     private fun getHanoi(key:String) {
-        presenterHanoi.loadDataDistrict("Vietnam","Hanoi","Hanoi",key)
+        presenterHanoi.loadDataDistrict(key)
     }
 
     private fun getHCM(key: String){

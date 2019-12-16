@@ -40,7 +40,9 @@ open class FilterHelpCountry : Filter() {
     }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            adapter.setCityCraft(results?.values as ArrayList<Data>)
+
+                adapter.setCityCraft(results?.values as ArrayList<Data>?)
+
             adapter.notifyDataSetChanged()
         }
 

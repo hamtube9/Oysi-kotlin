@@ -1,7 +1,6 @@
 package com.oysi.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,30 +8,54 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oysi.R
 import com.oysi.adapter.AdapterRanking
+import com.oysi.model.ranking.Data
+import com.oysi.model.ranking.RankingResponse
 import com.oysi.mvp.ViewPresenter.RankingViewPresenter
+import com.oysi.mvp.presenter.RankingPresenter
 import kotlinx.android.synthetic.main.fragment_ranking.*
 
-class FragmentRanking : Fragment(){
-    var list = ArrayList<String>()
-    lateinit var adapter : AdapterRanking
+class FragmentRanking : Fragment(), RankingViewPresenter {
+    private var list = ArrayList<Data>()
+    private var data = ArrayList<Data>()
+    private lateinit var adapter: AdapterRanking
+    private lateinit var presenterRanking: RankingPresenter
+    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_ranking,container,false)
+        val view = inflater.inflate(R.layout.fragment_ranking, container, false)
+        presenterRanking = RankingPresenter()
+        presenterRanking.attachView(this)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        for (i in 0..100){
-            list.add(i.toString()+"")
-        }
-        adapter= AdapterRanking(activity!!.applicationContext,list)
-        rcRanking.adapter=adapter
+        adapter = AdapterRanking(activity!!.applicationContext, list)
+        rcRanking.adapter = adapter
         rcRanking.layoutManager = LinearLayoutManager(activity)
+        getRanking(key)
+    }
 
+    private fun getRanking(key: String) {
+        presenterRanking.getDataRanking(key)
+    }
+
+    override fun onLoadRankingSucces(response: RankingResponse) {
+        if (response.status == "success") {
+            data.clear()
+            data.addAll(response.data)
+            list.clear()
+            list.addAll(data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun showError(error: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

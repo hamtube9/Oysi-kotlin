@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -18,12 +19,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_size_16"
+                android:layout_marginStart="@dimen/text_size_16"
                 android:layout_weight="2"
                 android:padding="@dimen/margin5"
-                android:text="Hãy theo dõi không khí để đảm bảo an toàn cho sức khỏe của bạn.\n Bạn đã có khẩu trang chưa? \n Nếu chưa có hãy mua ngay!!"
+                android:text="@string/content"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -57,7 +59,6 @@
         </LinearLayout>
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -70,24 +71,46 @@
                 swipe:leftEdgeSwipeOffset="0dp">
 
                 <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
                     android:id="@+id/llHide"
-                    android:layout_width="@dimen/size_box"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorAccent"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="@dimen/size_box"
 
-                    <ImageView
-                        android:id="@+id/imgShareHanoi"
-                        android:layout_width="@dimen/size_30"
-                        android:layout_height="@dimen/size_30"
-                        android:layout_marginStart="@dimen/margin10"
-                        android:layout_marginLeft="@dimen/margin10"
-                        android:src="@drawable/ic_share" />
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccent"
+                        android:gravity="center">
 
+                        <ImageView
+                            android:id="@+id/imgShareHanoi"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:src="@drawable/ic_share" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/size_box"
+                        android:layout_height="match_parent"
+                        android:background="@color/facebook"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/imgShareFacebookHanoi"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:src="@drawable/ic_facebook_circle" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@color/browser_actions_bg_grey"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -100,7 +123,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_marginStart="@dimen/margin10"
                             android:padding="@dimen/margin5"
                             android:text="@string/city" />
 
@@ -108,7 +131,7 @@
                             android:id="@+id/tvCityHanoi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_marginStart="@dimen/margin10"
                             android:padding="@dimen/margin5" />
                     </LinearLayout>
 
@@ -175,8 +198,6 @@
                                         android:layout_width="@dimen/size_icon"
                                         android:layout_height="@dimen/size_icon"
                                         android:layout_marginStart="@dimen/margin5"
-                                        android:layout_marginLeft="@dimen/margin5"
-                                        android:src="@drawable/ic_sun"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintLeft_toRightOf="@id/tvThoiTiet"
                                         swipe:layout_constraintTop_toTopOf="parent" />
@@ -185,7 +206,7 @@
                                         android:id="@+id/tvNhietDoCity"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginRight="@dimen/margin5"
+                                        android:layout_marginEnd="@dimen/margin5"
                                         android:text="@string/nhietdoCity"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toLeftOf="@id/tvNhietDoHaNoi"
@@ -195,7 +216,7 @@
                                         android:id="@+id/tvNhietDoHaNoi"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginRight="@dimen/margin5"
+                                        android:layout_marginEnd="@dimen/margin5"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toLeftOf="@id/doC"
                                         swipe:layout_constraintTop_toTopOf="parent" />
@@ -205,7 +226,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="@dimen/margin10"
-                                        android:layout_marginRight="@dimen/margin10"
                                         android:text="@string/nhietdo"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toRightOf="parent"
@@ -260,28 +280,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:clickToClose="true"
+                android:layout_marginTop="@dimen/text_size_16"
                 swipe:leftEdgeSwipeOffset="0dp"
                 swipe:rightEdgeSwipeOffset="0dp">
 
                 <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
                     android:id="@+id/llHide2"
-                    android:layout_width="@dimen/size_box"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorAccent"
-                    android:gravity="center">
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="@dimen/size_box"
 
-                    <ImageView
-                        android:id="@+id/imgShareHCM"
-                        android:layout_width="@dimen/size_30"
-                        android:layout_height="@dimen/size_30"
-                        android:layout_marginStart="@dimen/margin10"
-                        android:layout_marginLeft="@dimen/margin10"
-                        android:src="@drawable/ic_share" />
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccent"
+                        android:gravity="center">
 
+                        <ImageView
+                            android:id="@+id/imgShareHCM"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:src="@drawable/ic_share" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/size_box"
+                        android:layout_height="match_parent"
+                        android:background="@color/facebook"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/imgShareFacebookHCM"
+                            android:layout_width="@dimen/size_30"
+                            android:layout_height="@dimen/size_30"
+                            android:layout_marginStart="@dimen/margin10"
+                            android:src="@drawable/ic_facebook_circle" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@color/browser_actions_bg_grey"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -295,7 +338,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/margin10"
-                            android:layout_marginLeft="@dimen/margin10"
                             android:layout_marginTop="@dimen/margin10"
                             android:padding="@dimen/margin5"
                             android:text="@string/city" />
@@ -305,7 +347,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/margin10"
-                            android:layout_marginLeft="@dimen/margin10"
                             android:layout_marginTop="@dimen/margin10"
                             android:padding="@dimen/margin5" />
                     </LinearLayout>
@@ -372,8 +413,7 @@
                                         android:id="@+id/imgThoiTietHCM"
                                         android:layout_width="@dimen/size_icon"
                                         android:layout_height="@dimen/size_icon"
-                                        android:layout_marginLeft="@dimen/margin5"
-                                        android:src="@drawable/ic_sun"
+                                        android:layout_marginStart="@dimen/margin5"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintLeft_toRightOf="@id/tvThoiTietHCM"
                                         swipe:layout_constraintTop_toTopOf="parent" />
@@ -382,7 +422,7 @@
                                         android:id="@+id/tvNhietDoCityHCM"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginRight="@dimen/margin5"
+                                        android:layout_marginEnd="@dimen/margin5"
                                         android:text="@string/nhietdoCity"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toLeftOf="@id/tvNhietDoHCM"
@@ -392,7 +432,7 @@
                                         android:id="@+id/tvNhietDoHCM"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginRight="@dimen/margin5"
+                                        android:layout_marginEnd="@dimen/margin5"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toLeftOf="@id/doCHCM"
                                         swipe:layout_constraintTop_toTopOf="parent" />
@@ -402,7 +442,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="@dimen/margin10"
-                                        android:layout_marginRight="@dimen/margin10"
                                         android:text="@string/nhietdo"
                                         swipe:layout_constraintBottom_toBottomOf="parent"
                                         swipe:layout_constraintRight_toRightOf="parent"

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        style="@style/Theme.AppCompat.Light.NoActionBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Theme.AppCompat.Light.NoActionBar">
+        android:layout_height="wrap_content">
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-            <ImageView
 
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/bg"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bg"/>
+                android:src="@drawable/bg" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -25,10 +26,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-        <androidx.recyclerview.widget.RecyclerView
-            android:padding="@dimen/margin5"
-            android:id="@+id/rcRanking"
+
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:background="@color/bluesoft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                  android:gravity="center_horizontal"
+                    android:text="#"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:text="@string/thanhpho"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:text="@string/AQI"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcRanking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin5" />
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,6 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <com.wang.avi.AVLoadingIndicatorView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        style="@style/AVLoadingIndicatorView"
+        app:indicatorColor="@color/orangeAgent"
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:id="@+id/progress_dialogCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -43,6 +57,20 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <com.wang.avi.AVLoadingIndicatorView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="invisible"
+                        style="@style/AVLoadingIndicatorView"
+                        app:indicatorColor="@color/orangeAgent"
+                        app:indicatorName="LineSpinFadeLoaderIndicator"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:id="@+id/progress_dialogToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                     <TextView
                         android:id="@+id/tvShowInfo"
                         android:layout_width="wrap_content"
@@ -54,7 +82,6 @@
                         android:textColor="@color/black" />
 
                     <LinearLayout
-                        android:visibility="invisible"
                         android:id="@+id/llInfoCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -137,7 +164,7 @@
                                             app:layout_constraintTop_toTopOf="parent" />
 
                                         <ImageView
-                                            android:id="@+id/imgThoiTietHCM"
+                                            android:id="@+id/imgThoiTietCityToolbar"
                                             android:layout_width="@dimen/size_icon"
                                             android:layout_height="@dimen/size_icon"
                                             android:layout_marginLeft="@dimen/margin5"
@@ -153,11 +180,11 @@
                                             android:layout_marginRight="@dimen/margin5"
                                             android:text="@string/nhietdoCity"
                                             app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintRight_toLeftOf="@id/tvNhietDoCity"
+                                            app:layout_constraintRight_toLeftOf="@id/tvNhietDoCityToolbar"
                                             app:layout_constraintTop_toTopOf="parent" />
 
                                         <TextView
-                                            android:id="@+id/tvNhietDoCity"
+                                            android:id="@+id/tvNhietDoCityToolbar"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginRight="@dimen/margin5"

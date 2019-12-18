@@ -17,12 +17,12 @@ import com.oysi.mvp.presenter.StatePresenter
 import kotlinx.android.synthetic.main.fragment_state.*
 
 class FragmentState : BaseFragment(),StateViewPresenter {
-    var list : ArrayList<Data> = ArrayList()
-    var data : ArrayList<Data> = ArrayList()
-    var country :String?=null
-    lateinit var adapter : AdapterState
-    lateinit var preesenter : StatePresenter
-    val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var list : ArrayList<Data> = ArrayList()
+    private var data : ArrayList<Data> = ArrayList()
+    private var country :String?=null
+    private lateinit var adapter : AdapterState
+    private  lateinit var preesenter : StatePresenter
+    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +32,8 @@ class FragmentState : BaseFragment(),StateViewPresenter {
         val view =inflater.inflate(R.layout.fragment_state,container,false)
         preesenter = StatePresenter()
         preesenter.attachView(this)
+        data.clear()
+        list.clear()
         return view
     }
 
@@ -78,7 +80,7 @@ class FragmentState : BaseFragment(),StateViewPresenter {
     }
 
     override fun showError(error: String) {
-        Toast.makeText(activity!!.applicationContext,"Error : "+error,Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity!!.applicationContext, "Error : $error",Toast.LENGTH_SHORT).show()
     }
 
 

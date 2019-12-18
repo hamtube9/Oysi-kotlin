@@ -1,12 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin10"
+    >
 
-    <TextView
-        android:padding="@dimen/margin10"
-        android:textColor="@color/black"
-        android:id="@+id/tvRanking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tvRankingSTT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/margin10"
+                android:id="@+id/imgRankingCity"
+                android:layout_width="@dimen/size_32"
+                android:layout_height="@dimen/size_32" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tvRankingCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin5" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/size_box"
+                android:layout_height="@dimen/size_24"
+                app:cardCornerRadius="@dimen/margin10">
+
+                <LinearLayout
+                    android:id="@+id/llRanking"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/orangeAgent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvRankingAQI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

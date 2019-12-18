@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardViewCity"
+    android:layout_margin="@dimen/margin10"
     app:cardCornerRadius="@dimen/text_size_16">
 
     <LinearLayout
@@ -13,13 +14,14 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:src="@drawable/ic_city"
             android:layout_gravity="center_vertical"
             android:id="@+id/itemcity_img"
             android:layout_width="@dimen/size_32"
             android:layout_height="@dimen/size_32"/>
 
         <TextView
-            android:layout_marginLeft="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin10"
             android:padding="@dimen/margin10"
             android:id="@+id/itemcity_tvCity"
             android:layout_width="wrap_content"

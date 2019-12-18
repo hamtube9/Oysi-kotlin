@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.oysi.R
 import com.oysi.base.BaseFragment
 import com.oysi.model.nearestcity.NearestCityResponse
@@ -15,10 +13,10 @@ import com.oysi.mvp.presenter.NearestCityPresenter
 import kotlinx.android.synthetic.main.fragment_dialog.*
 
 class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
-    var latitude: String? = null
-    var longitude: String? = null
-    lateinit var presenter: NearestCityPresenter
-    val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var latitude: String? = null
+    private var longitude: String? = null
+    private lateinit var presenter: NearestCityPresenter
+    private  val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
 
 
     override fun onCreateView(
@@ -84,15 +82,15 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
                 dialog_imgthoitiet.setImageResource(R.drawable.ic_50d)
             }
 
-            if (aqi > 0 && aqi <= 49) {
+            if (aqi in 1..49) {
                 dialog_emotion.setImageResource(R.drawable.ic_happy)
-            } else if (aqi >= 50 && aqi <= 99) {
+            } else if (aqi in 50..99) {
                 dialog_emotion.setImageResource(R.drawable.ic_normal)
-            } else if (aqi >= 100 && aqi <= 149) {
+            } else if (aqi in 100..149) {
                 dialog_emotion.setImageResource(R.drawable.ic_sick)
-            } else if (aqi >= 150 && aqi <= 199) {
+            } else if (aqi in 150..199) {
                 dialog_emotion.setImageResource(R.drawable.ic_sad)
-            } else if (aqi >= 200 && aqi <= 249) {
+            } else if (aqi in 200..249) {
                 dialog_emotion.setImageResource(R.drawable.ic_surprise)
             } else if (aqi >= 250) {
                 dialog_emotion.setImageResource(R.drawable.ic_danger)

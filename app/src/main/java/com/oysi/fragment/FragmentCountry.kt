@@ -1,7 +1,6 @@
 package com.oysi.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +32,8 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
     ): View? {
         presenter = CountryPresenter()
         presenter.attachView(this)
+        data.clear()
+        list.clear()
         return inflater.inflate(R.layout.fragment_country, container, false)
     }
 
@@ -77,8 +78,8 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
         })
     }
 
-    fun filter(charText: String) {
-        var charText = charText
+    fun filter(c: String) {
+        var charText: String = c
         charText = searchView.query.toString().toLowerCase(Locale.getDefault())
         list.clear()
         if (charText.length == 0) {

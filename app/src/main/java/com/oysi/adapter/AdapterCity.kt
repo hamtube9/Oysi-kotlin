@@ -18,7 +18,7 @@ class AdapterCity(private var context:Context,private var list : ArrayList<Data>
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCity.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_city,parent,false)
         return ViewHolder(view)
     }
@@ -27,10 +27,11 @@ class AdapterCity(private var context:Context,private var list : ArrayList<Data>
         return list.size
     }
 
-    override fun onBindViewHolder(holder: AdapterCity.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.itemcity_tvCity.text = list[position].city
         holder.itemView.cardViewCity.setOnClickListener {
             itemSelect.onclickListener(position)
         }
+
     }
 }

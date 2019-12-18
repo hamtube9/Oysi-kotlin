@@ -4,6 +4,7 @@ import com.oysi.model.city.CityResponse
 import com.oysi.model.country.CountryResponse
 import com.oysi.model.district.DistrictResponse
 import com.oysi.model.nearestcity.NearestCityResponse
+import com.oysi.model.ranking.RankingResponse
 import com.oysi.model.state.StateResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -20,6 +21,20 @@ interface Service {
         @Query("country") country: String,
         @Query("key") key: String
     ): Observable<StateResponse>
+
+
+    // data city
+    @GET("v2/cities")
+    fun getCities(@Query("state")state:String,@Query("country") country: String,
+                  @Query("key") key: String): Observable<CityResponse>
+
+    //data more info city
+    @GET("v2/city")
+    fun getInfoCity(
+        @Query("country") country: String, @Query("state") state: String, @Query("city") city: String,
+        @Query("key") key: String
+    ): Observable<DistrictResponse>
+
 
     //data Hanoi
     @GET("v2/city")
@@ -61,8 +76,8 @@ interface Service {
         @Query("key") key: String
     ): Observable<NearestCityResponse>
 
-    // "api.airvisual.com/v2/cities?state=New%20York&country=USA&key={{YOUR_API_KEY}}"
-    @GET("v2/cities")
-    fun getCities(@Query("state")state:String,@Query("country") country: String,
-        @Query("key") key: String): Observable<CityResponse>
+    //ranking
+    //api.airvisual.com/v2/city_ranking?key={{YOUR_API_KEY}}
+    @GET("v2/city_ranking")
+    fun getRanking(@Query("key") key: String) :Observable<RankingResponse>
 }

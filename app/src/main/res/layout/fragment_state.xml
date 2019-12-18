@@ -27,9 +27,7 @@
             android:id="@+id/svState"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin5"
             android:layout_marginTop="@dimen/margin5"
-            android:layout_marginRight="@dimen/margin10"
             android:background="@drawable/search_input_type"
             android:layout_marginStart="@dimen/margin5"
             android:layout_marginEnd="@dimen/margin10" />

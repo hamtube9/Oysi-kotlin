@@ -7,9 +7,19 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="polluted">#fe6a69</color>
-
+    <color name="facebook">#3a559f</color>
+    <color name="bluesoft">#663a559f</color>
 
     //
+
+    <color name="goodH">#93e627</color>
+    <color name="normalH">#ffcc00</color>
+    <color name="notgoodH">#f97f2c</color>
+    <color name="pollutedH">#ff4645</color>
+    <color name="soimportantH">#84002c</color>
+    <color name="importantH">#940045</color>
+    <color name="carefulH">#a87383</color>
+    <color name="grey">#d5d6dd</color>
 
 
 </resources>

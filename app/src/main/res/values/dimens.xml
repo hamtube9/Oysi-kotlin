@@ -13,4 +13,5 @@
     <dimen name="size200">200dp</dimen>
     <dimen name="size300">300dp</dimen>
     <dimen name="size_24">24dp</dimen>
+    <dimen name="size100">100dp</dimen>
 </resources>

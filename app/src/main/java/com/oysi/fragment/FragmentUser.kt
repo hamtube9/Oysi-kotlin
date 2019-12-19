@@ -13,10 +13,8 @@ import com.oysi.R
 import com.oysi.activity.AddCityPollActivity
 import com.oysi.adapter.AdapterPoll
 import com.oysi.base.BaseFragment
-import com.oysi.base.TinyDB
 import com.oysi.model.Poll.CityPoll
 import kotlinx.android.synthetic.main.fragment_user.*
-import kotlinx.android.synthetic.main.item_poll.*
 
 
 class FragmentUser : BaseFragment() {
@@ -24,15 +22,13 @@ class FragmentUser : BaseFragment() {
     private var listPoll: ArrayList<CityPoll> = ArrayList()
     private lateinit var ref: DatabaseReference
     private lateinit var dataList: MutableList<CityPoll>
-    private var checked = true
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_user, container, false)
 
-        return view
+        return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -58,8 +54,12 @@ class FragmentUser : BaseFragment() {
                         listPoll.add(city)
                         adapter.notifyDataSetChanged()
                         progress_poll.visibility = View.INVISIBLE
-                    }
+                        tvEmpty.visibility = View.INVISIBLE
 
+                    }
+                }else{
+                    tvEmpty.visibility = View.VISIBLE
+                    progress_poll.visibility = View.INVISIBLE
                 }
             }
         })
@@ -73,20 +73,22 @@ class FragmentUser : BaseFragment() {
     }
 
     private fun adapterSetting() {
-
         adapter = AdapterPoll(
             activity!!.applicationContext,
-            listPoll,object :AdapterPoll.onCheckItemLisnter{
+            listPoll, object : AdapterPoll.onCheckItemLisnter {
                 override fun onCheck(position: Int, cityPoll: CityPoll) {
-                 val up=  listPoll[position].care!! +1
-                    val updateCity = CityPoll(cityPoll.city,cityPoll.country,up)
+                    val up = listPoll[position].care!! + 1
+                    val updateCity = CityPoll(cityPoll.city, cityPoll.country, up)
                     ref.child(cityPoll.city.toString()).setValue(updateCity)
-
+                    cityPoll.checkVote = true
                 }
 
                 override fun onUnCheck(position: Int, cityPoll: CityPoll) {
-                    val city = CityPoll(cityPoll.city,cityPoll.country,cityPoll.care)
+                    val down = listPoll[position].care!! - 1
+                    val city = CityPoll(cityPoll.city, cityPoll.country, down)
                     ref.child(cityPoll.city.toString()).setValue(city)
+                    cityPoll.checkVote = false
+
                 }
             })
 

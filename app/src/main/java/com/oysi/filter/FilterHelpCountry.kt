@@ -20,11 +20,11 @@ open class FilterHelpCountry : Filter() {
 
 
     override fun performFiltering(constraint: CharSequence?): FilterResults {
-        var result: FilterResults = FilterResults()
+        val result: FilterResults = FilterResults()
         if (constraint != null || constraint!!.length > 0) {
             var c = constraint.toString().toUpperCase()
 
-            var foundList: ArrayList<Data> = ArrayList()
+            val foundList: ArrayList<Data> = ArrayList()
             var country: Data
             for (i in 0..listFilter!!.size) {
                 country = listFilter!!.get(i)

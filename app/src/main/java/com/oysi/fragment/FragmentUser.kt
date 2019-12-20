@@ -62,9 +62,8 @@ class FragmentUser : BaseFragment() {
             override fun onCancelled(p0: DatabaseError) {
             }
             override fun onDataChange(p0: DataSnapshot) {
-                listPoll.clear()
-
                 if (p0.exists()) {
+                    listPoll.clear()
                     for (i in p0.children) {
                         val city = i.getValue(CityPoll::class.java)
                         listPoll.add(city!!)

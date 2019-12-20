@@ -14,4 +14,7 @@
     <dimen name="size300">300dp</dimen>
     <dimen name="size_24">24dp</dimen>
     <dimen name="size100">100dp</dimen>
+    <dimen name="margin155">155dp</dimen>
+    <dimen name="margin90">90dp</dimen>
+    <dimen name="size_18">18dp</dimen>
 </resources>

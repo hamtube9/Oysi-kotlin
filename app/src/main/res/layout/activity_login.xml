@@ -27,23 +27,37 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="@dimen/size_24"
-            app:cardCornerRadius="@dimen/margin10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:drawableLeft="@drawable/ic_facebook_circle"
-                android:text="Login Facebook"
-                android:textAllCaps="false"
-                android:background="@color/facebookbutton"
-                android:id="@+id/btnLogin"
-                android:textColor="@color/white"
+
+
+            <LinearLayout
+                android:id="@+id/llLogin"
+                android:layout_marginStart="@dimen/size_32"
+                android:layout_marginEnd="@dimen/size_32"
+                android:layout_marginTop="@dimen/size_24"
+                android:background="@drawable/button_facebook"
+                android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-               />
-        </androidx.cardview.widget.CardView>
+                android:layout_height="@dimen/size_48">
+
+                <ImageView
+                    android:layout_marginEnd="@dimen/margin5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    android:src="@drawable/ic_facebook_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+             <TextView
+                 android:textColor="@color/white"
+                 android:text="@string/login"
+                 android:textSize="@dimen/size_18"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
 
 
     </LinearLayout>

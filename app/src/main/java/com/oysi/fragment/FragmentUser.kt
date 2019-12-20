@@ -1,6 +1,7 @@
 package com.oysi.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,11 +12,15 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.oysi.R
+import com.oysi.activity.LoginActivity
 import com.oysi.adapter.AdapterPoll
 import com.oysi.base.BaseFragment
 import com.oysi.model.Poll.CityPoll
+import kotlinx.android.synthetic.main.fab_layout.*
 import kotlinx.android.synthetic.main.fragment_user.*
 
 
@@ -23,12 +28,12 @@ class FragmentUser : BaseFragment() {
     private lateinit var adapter: AdapterPoll
     private var listPoll: ArrayList<CityPoll> = ArrayList()
     private lateinit var ref: DatabaseReference
-
     private var closeRotate: Animation? = null
     private var openRotate: Animation? = null
     private var open: Animation? = null
     private var close: Animation? = null
     private var show = false
+    private var fabshow = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,29 +83,23 @@ class FragmentUser : BaseFragment() {
     /*-------------- Event Onclick Lisnter-----------*/
 
     private fun onClick() {
-        fabAddCityPoll.setOnClickListener {
-            if (show == false) {
-                show = true
-                openRotate =
-                    AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.open_rotate)
-                open = AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.open)
-                open!!.duration = 100
-                openRotate!!.duration = 100
-                fabAddCityPoll.animation = openRotate
-                cardViewFrame.visibility = View.VISIBLE
-                cardViewFrame.animation = open
-            } else {
-                show = false
+        fabCityPoll.setOnClickListener {
+           if (fabshow == false){
+               fabshow = true
+               fabAdd.show()
+               fabLogout.show()
+               fabCityPoll.setImageResource(R.drawable.ic_x)
+           }else{
+               fabshow = false
+               fabAdd.hide()
+               fabLogout.hide()
+               fabCityPoll.setImageResource(R.drawable.ic_arrow_upward_black_24dp)
+           }
 
-                closeRotate =
-                    AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.close_rotate)
-                close = AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.close)
-                close!!.duration = 100
-                closeRotate!!.duration = 100
-                fabAddCityPoll.animation = closeRotate
-                cardViewFrame.visibility = View.INVISIBLE
-                cardViewFrame.animation = close
-            }
+        }
+
+        fabAdd.setOnClickListener {
+            openFragmentAdd()
         }
 
         edtSearch.addTextChangedListener(object : TextWatcher {
@@ -115,6 +114,32 @@ class FragmentUser : BaseFragment() {
             }
 
         })
+
+        fabLogout.setOnClickListener {
+            logOut()
+        }
+    }
+
+    private fun openFragmentAdd() {
+        if (show == false) {
+            show = true
+            open = AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.open)
+            open!!.duration = 100
+            cardViewFrame.visibility = View.VISIBLE
+            cardViewFrame.animation = open
+        } else {
+            show = false
+            close = AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.close)
+            close!!.duration = 100
+            cardViewFrame.visibility = View.INVISIBLE
+            cardViewFrame.animation = close
+        }
+    }
+
+    private fun logOut() {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        startActivity(Intent(activity,LoginActivity::class.java))
     }
 
     fun filter(s: String) {

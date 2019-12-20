@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
     /*------------------Event Onclick -------------*/
 
     private fun eventOnclick() {
-        btnLogin.setOnClickListener {
+        llLogin.setOnClickListener {
             login()
         }
     }

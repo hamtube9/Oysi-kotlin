@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin5"
-            android:background="@drawable/search_input_type"
+            android:background="@drawable/search_input"
             android:layout_marginStart="@dimen/margin5"
             android:layout_marginEnd="@dimen/margin10" />
 

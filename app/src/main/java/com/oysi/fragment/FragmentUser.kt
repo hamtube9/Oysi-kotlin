@@ -55,7 +55,6 @@ class FragmentUser : BaseFragment() {
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-
             }
             override fun onDataChange(p0: DataSnapshot) {
                 listPoll.clear()
@@ -76,6 +75,7 @@ class FragmentUser : BaseFragment() {
         })
 
     }
+    /*-------------- Event Onclick Lisnter-----------*/
 
     private fun onClick() {
         fabAddCityPoll.setOnClickListener {
@@ -127,6 +127,7 @@ class FragmentUser : BaseFragment() {
         adapter.filterList(flist)
     }
 
+    /*-------------- Initialized-----------*/
     private fun adapterSetting() {
         adapter = AdapterPoll(
             activity!!.applicationContext,

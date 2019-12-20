@@ -31,6 +31,11 @@ class FragmentAddCity : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+       eventOnclick()
+    }
+    /*-------------- Event Onclick-----------*/
+
+    private fun eventOnclick() {
         btnAdd.setOnClickListener {
             val state =edtState.text.toString()
             val city = edtCity.text.toString()
@@ -39,6 +44,7 @@ class FragmentAddCity : BaseFragment() {
             addCityPoll(city,state, country)
         }
     }
+    /*-------------- Event Lisnter-----------*/
 
     private fun addCityPoll(city: String, state : String,country: String) {
         val ref = FirebaseDatabase.getInstance().getReference("poll")

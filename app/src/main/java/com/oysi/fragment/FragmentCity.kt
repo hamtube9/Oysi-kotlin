@@ -49,7 +49,6 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
         state = b!!.getString("state")
         country = b.getString("country")
         getCity(state.toString(), country.toString(), key)
-
         adapter =
             AdapterCity(activity!!.applicationContext, listCity, object : AdapterCity.onItemSelect {
                 override fun onclickListener(position: Int) {
@@ -65,6 +64,9 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
         adapter.notifyDataSetChanged()
     }
 
+
+    /*-------------- Event  Presenter Listener-----------*/
+
     private fun getInfoCity(country: String, state: String, city: String, key: String) {
         presenterInfoCity.getDataInfoCity(country, state, city, key)
     }
@@ -73,6 +75,7 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
         presenter.getCityResponse(state, country, key)
     }
 
+    /*-------------- Event View Presenter-----------*/
 
     override fun getDataCityResponse(response: CityResponse) {
         if (response.status == "success") {

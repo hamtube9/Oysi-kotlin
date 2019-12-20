@@ -271,8 +271,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
             val longLangha = response.data.location.coordinates[0]
             val latLangha = response.data.location.coordinates[1]
             val aqi = response.data.current.pollution.aqius
-//            val thoitiet = response.data.current.weather.ic
-//            val nhietdo = response.data.current.weather.tp
+
             mMap.addMarker(
                 MarkerOptions().position(
                     LatLng(
@@ -320,8 +319,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
             val longCauGIay = response.data.location.coordinates[0]
             val latCauGiay = response.data.location.coordinates[1]
             val aqi = response.data.current.pollution.aqius
-//            val thoitiet = response.data.current.weather.ic
-//            val nhietdo = response.data.current.weather.tp
+
             mMap.addMarker(
                 MarkerOptions().position(
                     LatLng(
@@ -370,8 +368,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
             val longTayHo = response.data.location.coordinates[0]
             val latTayHo = response.data.location.coordinates[1]
             val aqi = response.data.current.pollution.aqius
-//            val thoitiet = response.data.current.weather.ic
-//            val nhietdo = response.data.current.weather.tp
+
             mMap.addMarker(
                 MarkerOptions().position(
                     LatLng(

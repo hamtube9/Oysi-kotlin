@@ -48,7 +48,6 @@ class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPre
         llAdvertise.visibility = View.VISIBLE
         swipe.showMode = SwipeLayout.ShowMode.PullOut
         swipe.addDrag(SwipeLayout.DragEdge.Right, swipe.findViewById(R.id.llHide))
-//swipe:rightEdgeSwipeOffset="0dp"
         swipe2.showMode = SwipeLayout.ShowMode.PullOut
         swipe2.addDrag(SwipeLayout.DragEdge.Left, swipe.findViewById(R.id.llHide2))
 
@@ -202,7 +201,6 @@ class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPre
     }
 
     override fun loadHCMSuccess(response: DistrictResponse) {
-
         if (response.status == "success") {
             val nhietdoHCM = response.data.current.weather.tp
             val aqiHCM = response.data.current.pollution.aqius

@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         Pushbots.sharedInstance().registerForRemoteNotifications()
 
         val fragmentList = ArrayList<Fragment>()
@@ -42,23 +39,7 @@ class MainActivity : AppCompatActivity() {
         spaceTabLayout.setTabThreeIcon(R.drawable.ic_ranking)
         spaceTabLayout.setTabFourIcon(R.drawable.ic_facebook)
         spaceTabLayout.offsetLeftAndRight(4)
-        printHashKey(this)
+
     }
 
-    fun printHashKey(pContext: Context) {
-        try {
-            val info: PackageInfo = pContext.packageManager
-                .getPackageInfo(pContext.packageName, PackageManager.GET_SIGNATURES)
-            for (signature in info.signatures) {
-                val md: MessageDigest = MessageDigest.getInstance("SHA")
-                md.update(signature.toByteArray())
-                val hashKey = String(Base64.encode(md.digest(), 0))
-                Log.d("keyHash", "printHashKey() Hash Key: $hashKey")
-            }
-        } catch (e: NoSuchAlgorithmException) {
-            Log.e("keyHash", "printHashKey()", e)
-        } catch (e: Exception) {
-            Log.e("keyHash", "printHashKey()", e)
-        }
-    }
 }

@@ -62,22 +62,7 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
         ListenerOnclick()
     }
 
-
-    fun ListenerOnclick() {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                filter(newText!!)
-                adapter.filter.filter(newText)
-                return false
-            }
-
-        })
-    }
-
+    /*-------------  Event Listener --------------*/
     fun filter(c: String) {
         var charText: String = c
         charText = searchView.query.toString().toLowerCase(Locale.getDefault())
@@ -94,15 +79,28 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
         adapter.notifyDataSetChanged()
     }
 
-    /*-------------  Event Listener --------------*/
+
     fun getCountry(key: String) {
         presenter.getCountry(key)
+    }
 
+    /*---------------- Event onclick  ----------------*/
+    fun ListenerOnclick() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filter(newText!!)
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     /*------------- View Event Listener--------------*/
     override fun onLoadCountrySuccess(response: CountryResponse) {
-
         if (response.status=="success"){
             data.addAll(response.data)
             list.addAll(data)
@@ -110,7 +108,6 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
             progress_dialogCountry.visibility = View.INVISIBLE
 
         }
-
     }
 
     override fun showError(error: String) {

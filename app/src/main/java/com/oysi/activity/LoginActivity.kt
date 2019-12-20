@@ -32,36 +32,43 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         mAuth = FirebaseAuth.getInstance()
+
+       eventOnclick()
+    }
+    /*------------------Event Onclick -------------*/
+
+    private fun eventOnclick() {
         btnLogin.setOnClickListener {
-            LoginManager.getInstance()
-                .logInWithReadPermissions(this, arrayListOf("email", "public_profile"))
-            LoginManager.getInstance()
-                .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-                    override fun onSuccess(result: LoginResult?) {
-                        handleFacebookAccessToken(result)
-
-                        val sharedPreferences = getSharedPreferences("facebook", Context.MODE_PRIVATE)
-                        val edit = sharedPreferences.edit()
-                        edit.putString("userid", result!!.accessToken.userId)
-                        edit.apply()
-
-                    }
-
-                    override fun onCancel() {
-                    }
-
-                    override fun onError(error: FacebookException?) {
-                    }
-                })
+            login()
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
+    private fun login(){
+        LoginManager.getInstance()
+            .logInWithReadPermissions(this, arrayListOf("email", "public_profile"))
+        LoginManager.getInstance()
+            .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+                override fun onSuccess(result: LoginResult?) {
+                    handleFacebookAccessToken(result)
+
+                    val sharedPreferences = getSharedPreferences("facebook", Context.MODE_PRIVATE)
+                    val edit = sharedPreferences.edit()
+                    edit.putString("userid", result!!.accessToken.userId)
+                    edit.apply()
+
+                }
+
+                override fun onCancel() {
+                }
+
+                override fun onError(error: FacebookException?) {
+                }
+            })
     }
+
+
+    /*------------------Event function -------------*/
 
     private fun handleFacebookAccessToken(token: LoginResult?) {
         val credential = FacebookAuthProvider.getCredential(token!!.accessToken.token)
@@ -80,6 +87,8 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    /*------------------Event Listener -------------*/
+
     fun moveNextPage(){
         val currentUser = FirebaseAuth.getInstance().currentUser
         if(currentUser != null){
@@ -91,6 +100,10 @@ class LoginActivity : AppCompatActivity() {
             edit.apply()
             startActivity(intent)
         }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
 

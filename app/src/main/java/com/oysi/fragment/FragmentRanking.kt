@@ -40,10 +40,13 @@ class FragmentRanking : Fragment(), RankingViewPresenter {
         getRanking(key)
     }
 
+    /*------------- Event Presenter Listener--------------*/
+
+
     private fun getRanking(key: String) {
         presenterRanking.getDataRanking(key)
     }
-
+    /*-------------Event View  Presenter --------------*/
     override fun onLoadRankingSucces(response: RankingResponse) {
         if (response.status == "success") {
             data.clear()

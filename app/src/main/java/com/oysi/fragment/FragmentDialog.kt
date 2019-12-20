@@ -41,13 +41,13 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
     }
 
 
-    /*-----------------Event function ---------------------*/
+    /*-----------------Event Presenter Listener ---------------------*/
 
     private fun getNearestCity(lat: String, lon: String, key: String) {
         presenter.getNearestCity(lat, lon, key)
     }
 
-    /*-----------------Event Funtion Presenter---------------------*/
+    /*-----------------Event View Presenter---------------------*/
 
     override fun getDataNearestCitySuccess(response: NearestCityResponse) {
         if (response.status == "success") {

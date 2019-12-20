@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         spaceTabLayout.setTabTwoIcon(R.drawable.ic_vietnam)
         spaceTabLayout.setTabThreeIcon(R.drawable.ic_ranking)
         spaceTabLayout.setTabFourIcon(R.drawable.ic_facebook)
-
+        spaceTabLayout.offsetLeftAndRight(4)
         printHashKey(this)
     }
 

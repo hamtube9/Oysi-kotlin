@@ -22,7 +22,7 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
     private lateinit var presenterInfoCity: InfoCityPresenter
     private var state: String? = null
     private var country: String? = null
-    val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
     private var listData: ArrayList<Data> = ArrayList()
     private var listCity: ArrayList<Data> = ArrayList()
     private lateinit var adapter: AdapterCity

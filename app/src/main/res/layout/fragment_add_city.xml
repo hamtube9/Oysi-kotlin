@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin10">
+
+
+    <EditText
+        android:id="@+id/edtCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên Quận huyện" />
+
+    <EditText
+        android:id="@+id/edtState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên Thành Phố" />
+
+    <EditText
+        android:id="@+id/edtCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quốc gia" />
+
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginLeft="@dimen/size_24"
+        android:layout_marginRight="@dimen/size_24"
+        android:background="@color/bluesoft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Thêm" />
+
+</LinearLayout>

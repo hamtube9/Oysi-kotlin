@@ -20,7 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AddCityPollActivity"></activity>
+        <activity android:name=".activity.test">
+
+        </activity>
+        <activity android:name=".activity.AddCityPollActivity" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -32,7 +35,7 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

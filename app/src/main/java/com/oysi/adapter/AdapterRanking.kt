@@ -30,7 +30,6 @@ class AdapterRanking(var context: Context, var list: ArrayList<Data>):
         val aqi = c.ranking.current_aqi
         holder.itemView.tvRankingCity.text = c.city+", "+c.country
         holder.itemView.tvRankingAQI.text =aqi.toString()
-
         when {
             aqi in 1..49 -> {
                holder.itemView.llRanking.setBackgroundColor(Color.parseColor("#93e627"))
@@ -54,7 +53,9 @@ class AdapterRanking(var context: Context, var list: ArrayList<Data>):
                 holder.itemView.llRanking.setBackgroundColor(Color.parseColor("#a87383"))
             }
         }
-
+        for (i in 0..list.size){
+            holder.itemView.tvRankingSTT.text = i.toString()
+        }
 
     }
 }

@@ -41,4 +41,5 @@
     <string name="thanhpho">Thành phố</string>
     <string name="name">Tên :</string>
     <string name="email">Email :</string>
+    <string name="noCity">Hiện đang chưa có thành phố nào. \\nHãy thêm thành phố bạn quan tâm để mọi \\nngười bình chọn nhé</string>
 </resources>

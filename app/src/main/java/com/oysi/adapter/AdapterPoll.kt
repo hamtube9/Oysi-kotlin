@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.item_poll.view.*
 class AdapterPoll(var context: Context, var listPoll: ArrayList<CityPoll>,var onCheck : onCheckItemLisnter) :
     RecyclerView.Adapter<AdapterPoll.ViewHolder>() {
     interface onCheckItemLisnter{
-        fun onCheck(position : Int, cityPoll: CityPoll)
-        fun onUnCheck(position : Int, cityPoll: CityPoll)
+        fun onPlus(position : Int, cityPoll: CityPoll)
+        fun onMinus(position : Int, cityPoll: CityPoll)
     }
     val share = context.getSharedPreferences("check",Context.MODE_PRIVATE)
 
@@ -34,23 +34,28 @@ class AdapterPoll(var context: Context, var listPoll: ArrayList<CityPoll>,var on
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val a = listPoll[position]
         holder.itemView.tvSoLuotBinhChon.text = a.care.toString()
-        holder.itemView.tvCityPoll.text = a.city + ", " + a.country
-
-        holder.itemView.checkChon.setOnClickListener {
-            when (holder.itemView.checkChon.isChecked) {
-                true -> {
-                    onCheck.onCheck(position,listPoll[position])
-
-                }
-                false -> {
-                 onCheck.onUnCheck(position,listPoll[position])
-
-                }
-            }
+        holder.itemView.tvCityPoll.text = a.city + ", " + a.state
+        holder.itemView.tvCountryPoll.text = a.country
+        holder.itemView.imgPlus.setOnClickListener {
+            onCheck.onPlus(position,a)
+            holder.itemView.imgPlus.visibility = View.INVISIBLE
+            holder.itemView.imgMinus.visibility = View.VISIBLE
 
         }
 
+        holder.itemView.imgMinus.setOnClickListener {
+            onCheck.onMinus(position,a)
+            holder.itemView.imgPlus.visibility = View.VISIBLE
+            holder.itemView.imgMinus.visibility = View.INVISIBLE
 
+        }
+
+    }
+
+
+    fun filterList(flist : ArrayList<CityPoll>){
+        this.listPoll = flist
+        notifyDataSetChanged()
     }
 
 }

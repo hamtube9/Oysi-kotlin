@@ -5,27 +5,43 @@
     android:orientation="horizontal"
     android:layout_margin="@dimen/margin10">
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center"
         android:layout_height="match_parent">
-        <CheckBox
-           android:buttonTint="@color/black"
-            android:id="@+id/checkChon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+     <ImageView
+         android:id="@+id/imgPlus"
+         android:layout_marginRight="@dimen/margin5"
+         android:src="@drawable/ic_plus"
+         android:layout_width="@dimen/size_32"
+         android:layout_height="@dimen/size_32"/>
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/imgMinus"
+            android:src="@drawable/ic_minus"
+            android:layout_width="@dimen/size_32"
+            android:layout_height="@dimen/size_32"/>
     </LinearLayout>
     <LinearLayout
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_weight="4"
         android:layout_height="match_parent">
         <TextView
+            android:layout_marginLeft="@dimen/size_24"
             android:textColor="@color/black"
             android:textStyle="italic"
             android:id="@+id/tvCityPoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginLeft="@dimen/size_24"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/tvCountryPoll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

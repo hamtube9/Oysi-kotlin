@@ -46,25 +46,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:text="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:text="50" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:text="100" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:text="150" />
 
             <TextView
@@ -81,27 +81,27 @@
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="10dp"
-                android:background="@color/goodH"></LinearLayout>
+                android:background="@color/goodH" />
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="10dp"
-                android:background="@color/normalH"></LinearLayout>
+                android:background="@color/normalH" />
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="10dp"
-                android:background="@color/notgoodH"></LinearLayout>
+                android:background="@color/notgoodH" />
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="10dp"
-                android:background="@color/polluted"></LinearLayout>
+                android:background="@color/polluted" />
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="10dp"
-                android:background="@color/importantH"></LinearLayout>
+                android:background="@color/importantH" />
 
         </LinearLayout>
 
@@ -113,14 +113,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
                 android:text="@string/air_good" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="18dp"
+                android:layout_marginEnd="18dp"
                 android:text="@string/air_normal" />
 
             <TextView

@@ -159,6 +159,9 @@ class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPre
                 "04d" -> {
                     imgThoiTietHanoi.setImageResource(R.drawable.ic_04d)
                 }
+                "04n" -> {
+                    imgThoiTietHanoi.setImageResource(R.drawable.ic_04d)
+                }
                 "09d" -> {
                     imgThoiTietHanoi.setImageResource(R.drawable.ic_09d)
                 }
@@ -229,6 +232,9 @@ class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPre
                     imgThoiTietHCM.setImageResource(R.drawable.ic_03d)
                 }
                 "04d" -> {
+                    imgThoiTietHCM.setImageResource(R.drawable.ic_04d)
+                }
+                "04n" -> {
                     imgThoiTietHCM.setImageResource(R.drawable.ic_04d)
                 }
                 "09d" -> {

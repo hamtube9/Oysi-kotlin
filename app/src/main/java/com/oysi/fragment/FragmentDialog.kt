@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.oysi.R
 import com.oysi.base.BaseFragment
+import com.oysi.base.Constant
 import com.oysi.model.nearestcity.NearestCityResponse
 import com.oysi.mvp.ViewPresenter.NearestCityViewPresenter
 import com.oysi.mvp.presenter.NearestCityPresenter
@@ -22,7 +23,7 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
     private var latitude: String? = null
     private var longitude: String? = null
     private lateinit var presenter: NearestCityPresenter
-    private  val key = "3dff9938-fb12-49f5-bbd3-8fc361d0407b"
+    private  var key = ""
     private val CHANNEL_ID = "aqi notification"
 
     override fun onCreateView(
@@ -42,6 +43,7 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
         val bundle = arguments
         latitude = bundle!!.getString("latitude")
         longitude = bundle.getString("longitude")
+        key = tinyDB.getString(Constant.KEY_API).toString()
         Log.d("getLatln", latitude + " " + longitude)
         getNearestCity(latitude.toString(), longitude.toString(), key)
     }
@@ -73,30 +75,47 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
 
             dialog_AQI.text = aqi.toString()
             val thoitietNearstCity = response.data.current.weather.ic
-            if (thoitietNearstCity == "01d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_01d)
-            } else if (thoitietNearstCity == "01n") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_01n)
-            } else if (thoitietNearstCity == "02d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_02d)
-            } else if (thoitietNearstCity == "02n") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_02n)
-            } else if (thoitietNearstCity == "03d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_03d)
-            } else if (thoitietNearstCity == "04d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_04d)
-            } else if (thoitietNearstCity == "09d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_09d)
-            } else if (thoitietNearstCity == "10d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_10d)
-            } else if (thoitietNearstCity == "10n") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_10n)
-            } else if (thoitietNearstCity == "11d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_11d)
-            } else if (thoitietNearstCity == "13d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_13d)
-            } else if (thoitietNearstCity == "50d") {
-                dialog_imgthoitiet.setImageResource(R.drawable.ic_50d)
+            Log.d("thoitietCity",thoitietNearstCity)
+            when (thoitietNearstCity) {
+                "01d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_01d)
+                }
+                "01n" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_01n)
+                }
+                "02d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_02d)
+                }
+                "02n" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_02n)
+                }
+                "03d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_03d)
+                }
+                "04d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_04d)
+                }
+                "04n" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_04d)
+                }
+                "09d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_09d)
+                }
+                "10d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_10d)
+                }
+                "10n" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_10n)
+                }
+                "11d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_11d)
+                }
+                "13d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_13d)
+                }
+                "50d" -> {
+                    dialog_imgthoitiet.setImageResource(R.drawable.ic_50d)
+                }
             }
 
             if (aqi in 1..49) {

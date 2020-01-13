@@ -329,6 +329,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
             val longCauGIay = response.data.location.coordinates[0]
             val latCauGiay = response.data.location.coordinates[1]
             val aqi = response.data.current.pollution.aqius
+            val thoitiet = response.data.current.weather.ic
 
             mMap.addMarker(
                 MarkerOptions().position(

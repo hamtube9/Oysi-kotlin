@@ -1,13 +1,14 @@
-package com.oysi.fragment
+package com.oysi.activity
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.idocnet.inbrand.utils.custom.GridSpacingItemDecoration
 import com.oysi.R
 import com.oysi.adapter.AdapterCity
-import com.oysi.base.BaseFragment
+import com.oysi.base.Constant
+import com.oysi.base.TinyDB
 import com.oysi.model.city.CityResponse
 import com.oysi.model.city.Data
 import com.oysi.model.district.DistrictResponse
@@ -15,55 +16,53 @@ import com.oysi.mvp.ViewPresenter.CityViewPresenter
 import com.oysi.mvp.ViewPresenter.InfoCityViewPresenter
 import com.oysi.mvp.presenter.CityPresenter
 import com.oysi.mvp.presenter.InfoCityPresenter
-import kotlinx.android.synthetic.main.fragment_city.*
+import kotlinx.android.synthetic.main.activity_city.*
 
-class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
+class CityActivity : AppCompatActivity() , CityViewPresenter, InfoCityViewPresenter {
     private lateinit var presenter: CityPresenter
     private lateinit var presenterInfoCity: InfoCityPresenter
-    private var state: String? = null
-    private var country: String? = null
-    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var state =""
+    private var country=""
+    private var key = ""
     private var listData: ArrayList<Data> = ArrayList()
     private var listCity: ArrayList<Data> = ArrayList()
     private lateinit var adapter: AdapterCity
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_city, container, false)
+    private var tinyDB : TinyDB?=null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_city)
         presenter = CityPresenter()
         presenter.attachView(this)
 
         presenterInfoCity = InfoCityPresenter()
         presenterInfoCity.attachView(this)
-        return view
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        tinyDB = TinyDB(this)
         progress_dialogCity.visibility = View.VISIBLE
         llInfoCity.visibility = View.INVISIBLE
 
-        val b = arguments
-        state = b!!.getString("state")
-        country = b.getString("country")
+        key = tinyDB!!.getString(Constant.KEY_API).toString()
+
+        state = tinyDB!!.getString(Constant.STATE).toString()
+        country = tinyDB!!.getString(Constant.COUNTRY).toString()
         getCity(state.toString(), country.toString(), key)
         adapter =
-            AdapterCity(activity!!.applicationContext, listCity, object : AdapterCity.onItemSelect {
+            AdapterCity(this, listCity, object : AdapterCity.onItemSelect {
                 override fun onclickListener(position: Int) {
+                    llInfoCity.visibility = View.INVISIBLE
                     tvShowInfo.visibility = View.INVISIBLE
                     progress_dialogToolbar.visibility = View.VISIBLE
                     val city : Data = listCity[position]
+                    tinyDB!!.putString(Constant.CITY,city.city)
                     getInfoCity(country.toString(), state.toString(), city.city, key)
                 }
             })
 
         rcCity.adapter = adapter
-        rcCity.layoutManager = GridLayoutManager(activity!!.applicationContext, 2)
+        rcCity.layoutManager = GridLayoutManager(this, 2)
+        rcCity.addItemDecoration(GridSpacingItemDecoration(2,14,false))
         adapter.notifyDataSetChanged()
     }
-
 
     /*-------------- Event  Presenter Listener-----------*/
 
@@ -74,8 +73,6 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
     private fun getCity(state: String, country: String, key: String) {
         presenter.getCityResponse(state, country, key)
     }
-
-    /*-------------- Event View Presenter-----------*/
 
     override fun getDataCityResponse(response: CityResponse) {
         if (response.status == "success") {
@@ -164,4 +161,5 @@ class FragmentCity : BaseFragment(), CityViewPresenter, InfoCityViewPresenter {
     override fun showError(error: String) {
 
     }
+
 }

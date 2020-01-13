@@ -1,15 +1,21 @@
 package com.oysi.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.idocnet.inbrand.utils.custom.GridSpacingItemDecoration
 import com.oysi.R
+import com.oysi.activity.StateActivity
 import com.oysi.adapter.AdapterCountry
 import com.oysi.base.BaseFragment
+import com.oysi.base.Constant
+import com.oysi.base.TinyDB
 import com.oysi.model.country.CountryResponse
 import com.oysi.model.country.Data
 import com.oysi.mvp.ViewPresenter.CountryViewPresenter
@@ -19,7 +25,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class FragmentCountry : BaseFragment(), CountryViewPresenter {
-    val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    var key = ""
     var list = ArrayList<Data>()
     var data = ArrayList<Data>()
     lateinit var adapter: AdapterCountry
@@ -39,24 +45,27 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val tinyDB = TinyDB(activity!!.applicationContext)
+        key = tinyDB.getString(Constant.KEY_API).toString()
+        Log.d("key_api",key)
         progress_dialogCountry.visibility = View.VISIBLE
-        adapter = AdapterCountry(activity!!.applicationContext, list,object  : AdapterCountry.onItemSelect{
-            override fun onclickListener(position: Int) {
-                val transaction = activity!!.supportFragmentManager.beginTransaction()
-                val fragmentState = FragmentState()
-                transaction.replace(R.id.frame_layout,fragmentState)
-                val country = list.get(position).country
-                val b = Bundle()
-                b.putString("country",country)
-                fragmentState.arguments = b
-                transaction.addToBackStack(null)
-                transaction.commit()
+        adapter = AdapterCountry(
+            activity!!.applicationContext,
+            list,
+            object : AdapterCountry.onItemSelect {
+                override fun onclickListener(position: Int) {
 
-            }
+                    val country = list.get(position).country
+                    tinyDB.putString(Constant.COUNTRY, country)
 
-        })
+                    startActivity(Intent(activity, StateActivity::class.java))
+
+                }
+
+            })
         rcCountry.adapter = adapter
         rcCountry.layoutManager = GridLayoutManager(activity, 2)
+        rcCountry.addItemDecoration(GridSpacingItemDecoration(2, 14, false))
         getCountry(key)
         adapter.notifyDataSetChanged()
         ListenerOnclick()
@@ -101,7 +110,7 @@ class FragmentCountry : BaseFragment(), CountryViewPresenter {
 
     /*------------- View Event Listener--------------*/
     override fun onLoadCountrySuccess(response: CountryResponse) {
-        if (response.status=="success"){
+        if (response.status == "success") {
             data.addAll(response.data)
             list.addAll(data)
             adapter.notifyDataSetChanged()

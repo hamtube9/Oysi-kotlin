@@ -1,4 +1,4 @@
-package com.oysi.service
+package com.oysi.utils
 
 import com.oysi.model.city.CityResponse
 import com.oysi.model.country.CountryResponse

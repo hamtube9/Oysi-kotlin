@@ -20,10 +20,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.test">
+        <activity
+            android:name=".activity.CityActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".activity.StateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        </activity>
-        <activity android:name=".activity.AddCityPollActivity" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -50,7 +53,8 @@
 
         <activity
             android:name=".activity.MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+             />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

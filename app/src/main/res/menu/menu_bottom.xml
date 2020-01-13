@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_listworld"
+        android:icon="@drawable/ic_list"
+        android:title="@string/country" />
+
+    <item
+        android:id="@+id/menu_ranking"
+        android:icon="@drawable/ic_ranking"
+        android:title="@string/rank" />
+
+    <item
+        android:id="@+id/menu_vietnam"
+        android:icon="@drawable/ic_vietnam"
+        android:title="@string/VietNam" />
+
+    <item
+        android:id="@+id/menu_facebook"
+        android:icon="@drawable/ic_facebook"
+        android:title="@string/facebook" />
+</menu>

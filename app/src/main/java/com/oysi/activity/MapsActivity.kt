@@ -1,13 +1,18 @@
 package com.oysi.activity
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +25,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.oysi.R
+import com.oysi.base.Constant
+import com.oysi.base.TinyDB
 import com.oysi.fragment.FragmentDialog
 import com.oysi.model.district.DistrictResponse
 import com.oysi.mvp.ViewPresenter.CityCauGiayViewPresenter
@@ -34,7 +41,8 @@ import kotlinx.android.synthetic.main.activity_maps.*
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPresenter,
     CityCauGiayViewPresenter,CityTayHoViewPresenter {
     private val PERMISSION_REQUEST = 100
-    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var key = ""
+    private var tinyDB:TinyDB?=null
     private var latitude = 0.toDouble()
     private var longitude = 0.toDouble()
 
@@ -52,9 +60,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
     private lateinit var presenterCauGiay: CityCauGiayPresenter
     private lateinit var presenterTayHo : CityTayHoPresenter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
         presenterTayHo = CityTayHoPresenter()
         presenterTayHo.attachView(this)
 
@@ -64,10 +74,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
         presenterCauGiay = CityCauGiayPresenter()
         presenterCauGiay.attachView(this)
 
+        tinyDB = TinyDB(this)
+        key = tinyDB!!.getString(Constant.KEY_API).toString()
         frame_dialog.visibility = View.INVISIBLE
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
@@ -158,16 +171,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
 
     /*-----------------Check permision ---------------------*/
     private fun checkLocationPermission(): Boolean {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
             ) {
+
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -245,11 +256,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
         getTayHo(key)
     }
 
+
+
+    /*------------------Event function -------------*/
+
     private fun getTayHo(key: String) {
         presenterTayHo.getDataTayHo(key)
     }
-
-    /*------------------Event function -------------*/
 
     private fun getCauGiay(key: String) {
         presenterCauGiay.getDataCauGiay( key)
@@ -259,10 +272,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
         presenterLangHa.loadDataDistrict( key)
     }
 
-    override fun onStop() {
-        super.onStop()
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-    }
+
 
 
     /*------------------Event View Presenter -------------*/
@@ -278,7 +288,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
                         latLangha,
                         longLangha
                     )
-                ).title("Láng Hạ \n 68")
+                ).title(aqi.toString())
             ).showInfoWindow()
             if (aqi > 0 && aqi <= 49) {
                 mMap.addCircle(
@@ -326,7 +336,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
                         latCauGiay,
                         longCauGIay
                     )
-                ).title("Cầu Giấy")
+                ).title(aqi.toString())
             ).showInfoWindow()
             if (aqi > 0 && aqi <= 49) {
                 mMap.addCircle(
@@ -375,7 +385,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
                         latTayHo,
                         longTayHo
                     )
-                ).title("Tây Hồ")
+                ).title(aqi.toString())
             ).showInfoWindow()
             if (aqi > 0 && aqi <= 49) {
                 mMap.addCircle(
@@ -412,6 +422,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
     }
 
     override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
+
+
+
+    override fun onStop() {
+        super.onStop()
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+    }
+
 }

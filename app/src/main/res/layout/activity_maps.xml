@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.MapsActivity" >
 
+
     <fragment
         map:layout_constraintTop_toTopOf="parent"
         map:layout_constraintRight_toRightOf="parent"
@@ -27,6 +28,121 @@
         android:layout_marginLeft="@dimen/size_48"
         android:layout_marginRight="@dimen/size_48"
 />
+    <LinearLayout
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintRight_toRightOf="parent"
+        map:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="100" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="150" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="10dp"
+                android:background="@color/goodH"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="10dp"
+                android:background="@color/normalH"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="10dp"
+                android:background="@color/notgoodH"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="10dp"
+                android:background="@color/polluted"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="10dp"
+                android:background="@color/importantH"></LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                android:text="@string/air_good" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                android:text="@string/air_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/air_not_good" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/air_polluted" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/air_important" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <com.wang.avi.AVLoadingIndicatorView
         map:layout_constraintTop_toTopOf="parent"

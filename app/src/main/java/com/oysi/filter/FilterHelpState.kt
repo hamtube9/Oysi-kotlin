@@ -1,19 +1,19 @@
 package com.oysi.filter
 
 import android.widget.Filter
-import com.oysi.adapter.AdapterCountry
-import com.oysi.model.country.Data
+import com.oysi.adapter.AdapterState
+import com.oysi.model.state.Data
 
-open class FilterHelpCountry : Filter() {
+class FilterHelpState : Filter() {
     companion object {
         var listFilter: ArrayList<Data>? = null
-        lateinit var adapter: AdapterCountry
+        lateinit var adapter: AdapterState
         fun instanceCountry(
             filterList: ArrayList<Data>,
-            adapterCountry: AdapterCountry
+            adapterState: AdapterState
         ): FilterHelpCountry {
             this.listFilter = filterList
-            this.adapter = adapterCountry
+            this.adapter = adapterState
             return FilterHelpCountry()
         }
     }
@@ -25,11 +25,11 @@ open class FilterHelpCountry : Filter() {
             var c = constraint.toString().toUpperCase()
 
             val foundList: ArrayList<Data> = ArrayList()
-            var country: Data
+            var state: Data
             for (i in 0..listFilter!!.size) {
-                country = listFilter!!.get(i)
-                if (country.country.toUpperCase().contains(constraint)) {
-                    foundList.add(country)
+                state = listFilter!!.get(i)
+                if (state.state.toUpperCase().contains(constraint)) {
+                    foundList.add(state)
                 }
             }
             result.count = foundList.size
@@ -40,7 +40,7 @@ open class FilterHelpCountry : Filter() {
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-        adapter.setCityCraft(results?.values as ArrayList<Data>?)
+        adapter.setStateCraft(results?.values as ArrayList<Data>?)
         adapter.notifyDataSetChanged()
     }
 

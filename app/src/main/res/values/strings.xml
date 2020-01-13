@@ -42,6 +42,18 @@
     <string name="soimportant">#6684002c</string>
     <string name="careful">#66a87383</string>
     <string name="login">Login Facebook</string>
+    <string name="binhchon">Bình chọn</string>
+    <string name="find">Tìm kiếm</string>
+    <string name="vote">Vote</string>
+    <string name="city_state">Quận/huyện, Thành phố</string>
+    <string name="count">Lượt bình chọn</string>
+    <string name="country">Country</string>
+    <string name="facebook">Facebook</string>
+    <string name="air_good">good</string>
+    <string name="air_normal">normal</string>
+    <string name="air_not_good">not good</string>
+    <string name="air_polluted">polluted</string>
+    <string name="air_important">important</string>
 
 
 </resources>

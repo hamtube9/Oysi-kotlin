@@ -5,22 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.daimajia.swipe.SwipeLayout
 import com.oysi.R
 import com.oysi.model.Poll.CityPoll
 import kotlinx.android.synthetic.main.item_poll.view.*
 
-class AdapterPoll(var context: Context, var listPoll: ArrayList<CityPoll>,var onCheck : onCheckItemLisnter) :
+class AdapterPoll(var context: Context, var listPoll: ArrayList<CityPoll>,var onCheck : OnCheckItemLisnter) :
     RecyclerView.Adapter<AdapterPoll.ViewHolder>() {
-    interface onCheckItemLisnter{
+    interface OnCheckItemLisnter{
+        fun shareButtonOnClick(position: Int)
         fun onPlus(position : Int, cityPoll: CityPoll)
         fun onMinus(position : Int, cityPoll: CityPoll)
-    }
-    val share = context.getSharedPreferences("check",Context.MODE_PRIVATE)
-
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_poll, parent, false)
@@ -47,7 +47,12 @@ class AdapterPoll(var context: Context, var listPoll: ArrayList<CityPoll>,var on
             onCheck.onMinus(position,a)
             holder.itemView.imgPlus.visibility = View.VISIBLE
             holder.itemView.imgMinus.visibility = View.INVISIBLE
+        }
 
+        holder.itemView.swipe_item.showMode = SwipeLayout.ShowMode.PullOut
+        holder.itemView.swipe_item.addDrag(SwipeLayout.DragEdge.Right, holder.itemView.swipe_item.findViewById(R.id.ll_item_hide))
+        holder.itemView.img_item_share.setOnClickListener {
+            onCheck.shareButtonOnClick(position)
         }
 
     }

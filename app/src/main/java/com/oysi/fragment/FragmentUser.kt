@@ -2,6 +2,7 @@ package com.oysi.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,6 +14,9 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.facebook.login.LoginManager
+import com.facebook.share.model.ShareHashtag
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.oysi.R
@@ -28,8 +32,8 @@ class FragmentUser : BaseFragment() {
     private lateinit var adapter: AdapterPoll
     private var listPoll: ArrayList<CityPoll> = ArrayList()
     private lateinit var ref: DatabaseReference
-    private var closeRotate: Animation? = null
-    private var openRotate: Animation? = null
+    private val url = "https://www.airvisual.com/vietnam/hanoi"
+    private lateinit var shareDialog : ShareDialog
     private var open: Animation? = null
     private var close: Animation? = null
     private var show = false
@@ -94,12 +98,9 @@ class FragmentUser : BaseFragment() {
                fabLogout.hide()
                fabCityPoll.setImageResource(R.drawable.ic_arrow_upward_black_24dp)
            }
-
         }
-
-        fabAdd.setOnClickListener {
-            openFragmentAdd()
-        }
+       
+        fabAdd.setOnClickListener { openFragmentAdd() }
 
         edtSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -114,10 +115,12 @@ class FragmentUser : BaseFragment() {
 
         })
 
-        fabLogout.setOnClickListener {
-            logOut()
-        }
+        fabLogout.setOnClickListener { logOut() }
     }
+
+
+
+    /*-------------- function  Lisnter-----------*/
 
     private fun openFragmentAdd() {
         if (show == false) {
@@ -155,7 +158,22 @@ class FragmentUser : BaseFragment() {
     private fun adapterSetting() {
         adapter = AdapterPoll(
             activity!!.applicationContext,
-            listPoll, object : AdapterPoll.onCheckItemLisnter {
+            listPoll, object : AdapterPoll.OnCheckItemLisnter {
+                override fun shareButtonOnClick(position: Int) {
+                    val city = listPoll[position].city
+                    val state = listPoll[position].state
+                    val care = listPoll[position].care
+                    val mess = city+" thành phố " + state + " đang có " + care +" phiếu quan tâm. Mọi người hãy cùng vote cho "+city +" để đưa ý kiến lên cơ quan chức năng để có giải pháp khắc phục độ ô nhiễm hiện nay nhé!!"
+                    val content = ShareLinkContent.Builder()
+                        .setQuote(mess)
+                        .setContentUrl(Uri.parse(url))
+                        .setShareHashtag(ShareHashtag.Builder().setHashtag("#AirQuality").build())
+                        .build()
+                    if (ShareDialog.canShow(ShareLinkContent::class.java)) {
+                        shareDialog.show(content)
+                    }
+                }
+
                 override fun onPlus(position: Int, cityPoll: CityPoll) {
                     val care = listPoll[position].care!!
                     val up = care + 1
@@ -188,7 +206,11 @@ class FragmentUser : BaseFragment() {
         val fragment = FragmentAddCity()
         fm.replace(R.id.frame_add, fragment)
         fm.commit()
+
+        shareDialog = ShareDialog(this)
     }
+
+
 
 
 }

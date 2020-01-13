@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oysi.R
 import com.oysi.adapter.AdapterRanking
+import com.oysi.base.Constant
+import com.oysi.base.TinyDB
 import com.oysi.model.ranking.Data
 import com.oysi.model.ranking.RankingResponse
 import com.oysi.mvp.ViewPresenter.RankingViewPresenter
@@ -19,7 +21,8 @@ class FragmentRanking : Fragment(), RankingViewPresenter {
     private var data = ArrayList<Data>()
     private lateinit var adapter: AdapterRanking
     private lateinit var presenterRanking: RankingPresenter
-    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var tinyDB : TinyDB?=null
+    private var key = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +37,9 @@ class FragmentRanking : Fragment(), RankingViewPresenter {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        tinyDB = TinyDB(activity!!)
+        key = tinyDB!!.getString(Constant.KEY_API).toString()
+
         adapter = AdapterRanking(activity!!.applicationContext, list)
         rcRanking.adapter = adapter
         rcRanking.layoutManager = LinearLayoutManager(activity)
@@ -58,7 +64,6 @@ class FragmentRanking : Fragment(), RankingViewPresenter {
     }
 
     override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

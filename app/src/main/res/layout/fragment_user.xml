@@ -102,7 +102,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/margin5"
+                                    android:layout_marginStart="@dimen/margin5"
                                     android:padding="@dimen/margin5"
                                     android:text="@string/email"
                                     android:textStyle="bold" />
@@ -130,7 +130,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/browser_actions_bg_grey"
+        android:background="@color/colorWhite"
         android:padding="@dimen/margin10"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -139,98 +139,109 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <EditText
-                android:id="@+id/edtSearch"
-                android:hint="Tìm kiếm"
-                android:drawableRight="@drawable/ic_search_black_24dp"
-                android:background="@color/white"
-                android:layout_gravity="center_horizontal"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="@dimen/size300"
-                android:layout_height="wrap_content"/>
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/edtSearch"
+                    android:hint="@string/find"
+                    android:layout_marginLeft="@dimen/margin5"
+                    android:background="@color/white"
+
+                    android:drawableEnd="@drawable/ic_search_black_24dp"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <LinearLayout
-
-                android:layout_marginTop="@dimen/margin10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-            <TextView
-                android:text="Vote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/vote" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4">
+                    android:layout_weight="4"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:text="Quận/huyện, Thành phố"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/city_state" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2">
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:text="Lượt bình chọn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/count" />
                 </LinearLayout>
             </LinearLayout>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <com.wang.avi.AVLoadingIndicatorView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="invisible"
-        style="@style/AVLoadingIndicatorView"
-        app:indicatorColor="@color/orangeAgent"
-        app:indicatorName="LineSpinFadeLoaderIndicator"
-        android:id="@+id/progress_poll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/tvEmpty"
-        android:visibility="invisible"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/noCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progress_poll"
+                    style="@style/AVLoadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:indicatorColor="@color/orangeAgent"
+                    app:indicatorName="LineSpinFadeLoaderIndicator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcPoll"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/text_size_20" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/noCity"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcPoll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_size_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
@@ -242,23 +253,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginBottom="@dimen/size_24"
         android:layout_marginEnd="@dimen/margin10"
+        android:layout_marginBottom="@dimen/size_24"
         android:src="@drawable/ic_arrow_upward_black_24dp" />
+
     <include layout="@layout/fab_layout" />
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewFrame"
+        android:layout_width="@dimen/size300"
+        android:layout_height="@dimen/size200"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/size_box"
-        app:cardCornerRadius="@dimen/text_size_16"
-        android:layout_width="@dimen/size300"
-        android:layout_height="@dimen/size200">
+        app:cardCornerRadius="@dimen/text_size_16">
+
         <FrameLayout
             android:id="@+id/frame_add"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

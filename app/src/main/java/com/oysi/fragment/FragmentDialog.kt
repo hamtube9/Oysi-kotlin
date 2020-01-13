@@ -1,10 +1,16 @@
 package com.oysi.fragment
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context.NOTIFICATION_SERVICE
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.oysi.R
 import com.oysi.base.BaseFragment
 import com.oysi.model.nearestcity.NearestCityResponse
@@ -16,8 +22,8 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
     private var latitude: String? = null
     private var longitude: String? = null
     private lateinit var presenter: NearestCityPresenter
-    private  val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
-
+    private  val key = "3dff9938-fb12-49f5-bbd3-8fc361d0407b"
+    private val CHANNEL_ID = "aqi notification"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,12 +54,23 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
     }
 
     /*-----------------Event View Presenter---------------------*/
-
     override fun getDataNearestCitySuccess(response: NearestCityResponse) {
         if (response.status == "success") {
             dialog_tvCity.text = response.data.city
             dialog_tvNhietDo.text = response.data.current.weather.tp.toString()
             val aqi = response.data.current.pollution.aqius
+            var new_aqi = aqi
+
+            when {
+                new_aqi != aqi -> {
+                    pushNotifi(response.data.city,new_aqi,response.data.current.weather.tp)
+                }
+                new_aqi == aqi ->{
+                    pushNotifi(response.data.city,aqi,response.data.current.weather.tp)
+
+                }
+            }
+
             dialog_AQI.text = aqi.toString()
             val thoitietNearstCity = response.data.current.weather.ic
             if (thoitietNearstCity == "01d") {
@@ -103,4 +120,34 @@ class FragmentDialog : BaseFragment(), NearestCityViewPresenter {
     }
 
 
+      fun pushNotifi(city : String,aqi : Int,nhietdo : Int){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel
+            displayNotification(city,aqi,nhietdo)
+            val nCity = city
+            val nAqi = aqi
+            val nNhietdo = nhietdo
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel = NotificationChannel(CHANNEL_ID, nCity, importance)
+            mChannel.description = "Độ ô nhiễm : " +nAqi.toString() + " và nhiệt độ : "+nNhietdo.toString()
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager = activity!!.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(mChannel)
+        }
+    }
+
+    fun displayNotification(city : String,aqi : Int,nhietdo : Int){
+        val nCity = city
+        val nAqi = aqi
+        val nNhietdo = nhietdo
+      val builder =  NotificationCompat.Builder(activity)
+        builder.setSmallIcon(R.drawable.com_facebook_button_icon)
+        builder.setContentTitle("Oysi")
+        builder.setContentText( "Thành phố "+nCity+" Đang có độ ô nhiễm : " +nAqi.toString() + " và nhiệt độ : "+nNhietdo.toString())
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        var notiManager =NotificationManagerCompat.from((activity!!))
+        notiManager.notify(1,builder.build())
+        }
 }

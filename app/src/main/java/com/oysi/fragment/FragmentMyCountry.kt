@@ -15,6 +15,7 @@ import com.facebook.share.widget.ShareDialog
 import com.oysi.R
 import com.oysi.activity.MapsActivity
 import com.oysi.base.BaseFragment
+import com.oysi.base.Constant
 import com.oysi.model.district.DistrictResponse
 import com.oysi.mvp.ViewPresenter.CityHCMViewPresenter
 import com.oysi.mvp.ViewPresenter.CityHaNoiViewPresenter
@@ -23,7 +24,7 @@ import com.oysi.mvp.presenter.CityHanoiPresenter
 import kotlinx.android.synthetic.main.fragment_my_country.*
 
 class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPresenter {
-    private val key = "3564653d-5190-4ee6-9236-7cb733f6f27c"
+    private var key = ""
     private val url = "https://www.airvisual.com/vietnam/hanoi"
     private lateinit var presenterHanoi: CityHanoiPresenter
     private lateinit var presenterHCM: CityHCMPresenter
@@ -57,6 +58,8 @@ class FragmentMyCountry : BaseFragment(), CityHaNoiViewPresenter, CityHCMViewPre
     }
 
     private fun initView() {
+        key = tinyDB.getString(Constant.KEY_API).toString()
+
         tvLink.movementMethod = LinkMovementMethod.getInstance()
         FacebookSdk.sdkInitialize(activity)
         shareDialog = ShareDialog(this)

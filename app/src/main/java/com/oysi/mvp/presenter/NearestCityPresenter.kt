@@ -5,7 +5,7 @@ import com.oysi.model.nearestcity.NearestCityResponse
 import com.oysi.mvp.Presenter
 import com.oysi.mvp.View
 import com.oysi.mvp.ViewPresenter.NearestCityViewPresenter
-import com.oysi.service.RetrofitService
+import com.oysi.utils.RetrofitService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

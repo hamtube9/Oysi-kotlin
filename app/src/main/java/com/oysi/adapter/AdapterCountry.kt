@@ -20,11 +20,9 @@ class AdapterCountry(var context: Context,var list : ArrayList<Data>,var onclick
     }
 
 
-    class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCountry.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_country,parent,false)
         return ViewHolder(view)
     }
@@ -39,7 +37,7 @@ class AdapterCountry(var context: Context,var list : ArrayList<Data>,var onclick
         }
     }
 
-    override fun onBindViewHolder(holder: AdapterCountry.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tvCountry.text = list[position].country
         holder.itemView.cardViewCountry.setOnClickListener {
             onclick.onclickListener(position)
@@ -346,7 +344,7 @@ class AdapterCountry(var context: Context,var list : ArrayList<Data>,var onclick
     }
 
     override fun getFilter(): Filter {
-        var filterList : ArrayList<Data> = list
+        val filterList : ArrayList<Data> = list
         return FilterHelpCountry.instanceCountry(filterList,this)
     }
 }

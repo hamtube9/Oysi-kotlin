@@ -22,6 +22,7 @@
     <color name="importantH">#940045</color>
     <color name="carefulH">#a87383</color>
     <color name="grey">#d5d6dd</color>
+    <color name="colorWhite">#ffffff</color>
 
 
 </resources>

@@ -1,7 +1,6 @@
-package com.oysi.service
+package com.oysi.utils
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,6 +12,8 @@ class RetrofitService {
     companion object {
         const val BASE_URL = "http://api.airvisual.com/"
         fun getAPIService(): Service {
+
+//            val gson = GsonBuilder().setLenient().create()
             val okHttpClient: OkHttpClient = OkHttpClient.Builder()
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
@@ -25,6 +26,5 @@ class RetrofitService {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(Service::class.java)
-        }
-    }
+        }    }
 }

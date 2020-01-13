@@ -16,7 +16,7 @@ class AdapterRanking(var context: Context, var list: ArrayList<Data>):
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterRanking.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_ranking,parent,false)
         return ViewHolder(view)
     }
@@ -25,8 +25,8 @@ class AdapterRanking(var context: Context, var list: ArrayList<Data>):
         return list.size
     }
 
-    override fun onBindViewHolder(holder: AdapterRanking.ViewHolder, position: Int) {
-        val c = list.get(position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val c: Data = list[position]
         val aqi = c.ranking.current_aqi
         holder.itemView.tvRankingCity.text = c.city+", "+c.country
         holder.itemView.tvRankingAQI.text =aqi.toString()
@@ -53,9 +53,9 @@ class AdapterRanking(var context: Context, var list: ArrayList<Data>):
                 holder.itemView.llRanking.setBackgroundColor(Color.parseColor("#a87383"))
             }
         }
-        for (i in 0..list.size){
-            holder.itemView.tvRankingSTT.text = i.toString()
-        }
+
+        holder.itemView.tvRankingSTT.text = (position+1).toString()
+
 
     }
 }

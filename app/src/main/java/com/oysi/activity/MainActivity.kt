@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var fmRank = FragmentRanking()
     private var fmUser = FragmentUser()
     private var tinyDB: TinyDB? = null
-    private var active: Fragment = fmUser
+    private var active: Fragment = fmRank
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
             .commit()
         fm.beginTransaction().add(R.id.flContent, fmMyCountry, "3").hide(fmMyCountry)
             .commit()
-        fm.beginTransaction().add(R.id.flContent, fmRank, "2").hide(fmRank)
+        fm.beginTransaction().add(R.id.flContent, fmUser, "2").hide(fmUser)
             .commit()
-        fm.beginTransaction().add(R.id.flContent, fmUser, "1").commit()
+        fm.beginTransaction().add(R.id.flContent,fmRank , "1").commit()
 
         bnvMain.itemIconTintList = null
 

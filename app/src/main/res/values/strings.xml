@@ -54,6 +54,10 @@
     <string name="air_not_good">not good</string>
     <string name="air_polluted">polluted</string>
     <string name="air_important">important</string>
+    <string name="add_more_city">Thêm địa điểm quan tâm</string>
+    <string name="quanhuyen">Quận huyện</string>
+    <string name="quocgia">Quốc gia</string>
+    <string name="add">Thêm</string>
 
 
 </resources>

@@ -11,6 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/AVLoadingIndicatorView"
-        app:indicatorName="BallGridPulseIndicator"
-        app:indicatorColor="@color/colorPrimary"/>
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:indicatorColor="@color/orangeAgent"/>
 </LinearLayout>

@@ -77,6 +77,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, CityHaNoiViewPrese
         tinyDB = TinyDB(this)
         key = tinyDB!!.getString(Constant.KEY_API).toString()
         frame_dialog.visibility = View.INVISIBLE
+
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

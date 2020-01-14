@@ -5,35 +5,47 @@
     android:orientation="vertical"
     android:padding="@dimen/margin10">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/margin10"
+        android:text="@string/add_more_city" />
 
     <EditText
         android:id="@+id/edtCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên Quận huyện" />
+        android:hint="@string/quanhuyen"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/edtState"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên Thành Phố" />
+        android:hint="@string/city"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/edtCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quốc gia" />
-
+        android:hint="@string/quocgia"
+        android:imeOptions="actionDone"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/btnAdd"
-        android:layout_marginTop="@dimen/margin10"
-        android:layout_marginLeft="@dimen/size_24"
-        android:layout_marginRight="@dimen/size_24"
-        android:background="@color/bluesoft"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Thêm" />
+        android:layout_marginLeft="@dimen/size_24"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginRight="@dimen/size_24"
+        android:background="@drawable/button_facebook"
+        android:text="@string/add"
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>

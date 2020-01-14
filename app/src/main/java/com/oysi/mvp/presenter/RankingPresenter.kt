@@ -22,7 +22,8 @@ class RankingPresenter :Presenter{
     }
 
     fun getDataRanking(key : String){
-        compositeDisposable.add(RetrofitService.getAPIService().getRanking(key).subscribeOn(Schedulers.io())
+        compositeDisposable.add(RetrofitService.getAPIService().getRanking(key)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::getDataSuccess){t-> getDataFail(t,"Load Data Ranking Fail")})
     }

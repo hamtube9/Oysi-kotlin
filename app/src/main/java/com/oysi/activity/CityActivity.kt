@@ -114,9 +114,6 @@ class CityActivity : AppCompatActivity() , CityViewPresenter, InfoCityViewPresen
                 "04d" -> {
                     imgThoiTietCityToolbar.setImageResource(R.drawable.ic_04d)
                 }
-                "04n" -> {
-                    imgThoiTietCityToolbar.setImageResource(R.drawable.ic_04d)
-                }
                 "09d" -> {
                     imgThoiTietCityToolbar.setImageResource(R.drawable.ic_09d)
                 }
